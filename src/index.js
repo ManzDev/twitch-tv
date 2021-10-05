@@ -15,6 +15,16 @@ const TWITCH_CHANNELS = [
   "DesarrolloUtil"
 ];
 
+const createLinkPreload = (url) => {
+  const link = document.createElement("link");
+  link.rel = "preload";
+  link.as = "image";
+  link.href = url;
+  return link;
+};
+
+TWITCH_CHANNELS.forEach(name => document.head.appendChild(createLinkPreload(`logos/${name.toLowerCase()}.png`)));
+
 const [channelButton, volumeButton] = document.querySelectorAll(".dial");
 
 const screen = document.querySelector("retro-tv-screen");
