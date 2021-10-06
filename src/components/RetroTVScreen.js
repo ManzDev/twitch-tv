@@ -120,8 +120,13 @@ class RetroTVScreen extends HTMLElement {
     this.shadowRoot.querySelector(".television-screen").classList.toggle("on");
     const isTVOn = this.classList.contains("on");
 
-    if (isTVOn) this.setNoise("on");
-    else this.setNoise("off");
+    if (isTVOn) {
+      SFX.on.play();
+      this.setNoise("on");
+    } else {
+      SFX.off.play();
+      this.setNoise("off");
+    }
   }
 
   setNoise(action = "on") {
